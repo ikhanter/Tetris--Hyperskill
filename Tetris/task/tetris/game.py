@@ -128,7 +128,10 @@ class Tetrimino:
         self.push_pos_to_blocks()
         chooser = 1
         for block in self.blocks:
-            if block[1] == Tetrimino.width - 1 or block[0] == Tetrimino.height - 1:
+            if block[1] >= Tetrimino.width - 1 or block[0] >= Tetrimino.height - 1:
+                chooser = 0
+                break
+            elif PlayGrid.grid[block[0]][block[1]] == 'O':
                 chooser = 0
                 break
         self.blocks.clear()
